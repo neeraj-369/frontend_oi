@@ -1,0 +1,51 @@
+/* SideLayout.css */
+
+/* Default link styles */
+.nav-link {
+    /* color: white;
+    background-color: black;
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid transparent; 
+    transition: background-color 0.3s, transform 0.2s, border-color 0.3s; */
+  } 
+
+  
+
+  .nav-link:hover {
+    /* background-color: white ; 
+    transform: translateY(-3px); 
+    border-color: white; */
+  }
+  
+
+  /* Add these styles to your sidebar.css file */
+
+/* Style for the links */
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #121212;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  /* Initial state of links */
+  nav ul li a:hover {
+    background-color: #121212 !important;
+    transform: translateY(-1px); /* Elevate the link */
+    /* border-color: white !important;
+    outline-color: azure !important; */
+  }
+  
+  /* Style for the logout button */
+  nav ul li a:last-child:hover {
+    /* background-color: rgb(255, 255, 255); Change the background color for the logout button on hover */
+    /* background-color: #fc3 !important; */
+  }
+  
+  details{
+    background-color: #121212 !important;
+    color: white !important;
+
+  }

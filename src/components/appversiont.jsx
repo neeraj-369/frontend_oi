@@ -5,8 +5,17 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
+import {Box} from  '@mui/material';
 import { Grid } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+
+function CustomNoRowsOverlay() {
+  return (
+<Box sx={{paddingLeft:'45%',paddingTop:'10%'}}>No Rows</Box>
+ );
+}
 
 export default function AppVersionT() {
   const { applicationId } = useParams();
@@ -16,7 +25,7 @@ export default function AppVersionT() {
     const fetchData = async () => {
       try {
         // Fetch data from the backend API using the applicationId parameter
-        const response = await axios.get(`http://13.233.26.133/appversion/${applicationId}`);
+        const response = await axios.get(`http:///13.201.53.69/appversion/${applicationId}`);
         console.log(response);
         const dataWithIds = response.data.map((row, index) => ({
             ...row,
@@ -35,7 +44,7 @@ export default function AppVersionT() {
 
   const handleDeleteClick = async (applicationName, versionName) => {
     try {
-      const response = await axios.delete(`http://13.233.26.133/appversion/deleteversion`, {
+      const response = await axios.delete(`http:///13.201.53.69/appversion/deleteversion`, {
         data: {
           applicationName,
           versionName,
@@ -57,7 +66,7 @@ export default function AppVersionT() {
     console.log("applicationName: " + applicationName + " versionName: " + versionName);
     try {
       // Send a POST request to activate the version
-      const response = await axios.post('http://13.233.26.133/appversion/activate', {
+      const response = await axios.post('http:///13.201.53.69/appversion/activate', {
         applicationName,
         versionName,
       });
@@ -69,7 +78,7 @@ export default function AppVersionT() {
       alert('Failed to activate the version.');
     }
   };
-  
+  const noPointer = {cursor: 'default'};
   // Define the columns for the DataGrid
   const columns = [
     { field: 'versionname', headerName: 'Version Name', width: 200 },
@@ -80,7 +89,7 @@ export default function AppVersionT() {
         headerName: 'Activate',
         width: 200,
         renderCell: (params) => (
-          <Button variant="outlined" onClick={() => handleActivateClick(params.row.ApplicationName, params.row.versionname)}>
+          <Button variant="contained" color='secondary' sx={{ fontSize: '0.8rem', color: '#121212', bgcolor: '#fc3', ":hover": { backgroundColor: "#fc3" } }} onClick={() => handleActivateClick(params.row.ApplicationName, params.row.versionname)}>
             Activate
           </Button>
         ),
@@ -91,9 +100,12 @@ export default function AppVersionT() {
         headerName: 'Delete Version',
         width: 200,
         renderCell: (params) => (
-        <Button variant="outlined" onClick={() => handleDeleteClick(params.row.ApplicationName, params.row.versionname)}>
-            Delete
-        </Button>
+        <IconButton tooltip="delete" style={noPointer}>
+          <DeleteIcon color = "secondary" onClick={() => handleDeleteClick(params.row.ApplicationName, params.row.versionname)} style={noPointer} />
+        </IconButton>
+        // <Button variant="contained" color="secondary" sx={{ fontSize: '0.8rem', color: '#121212', bgcolor: '#fc3', ":hover": { backgroundColor: "#fc3" } }} onClick={() => handleDeleteClick(params.row.ApplicationName, params.row.versionname)}>
+        //     Delete
+        // </Button>
     ),
     },
   ];
@@ -106,17 +118,45 @@ export default function AppVersionT() {
       <Stack direction="row" spacing={2}>
         <Grid container spacing={2}>
           <Grid item xs={8}>
-            <TextField variant='outlined' label='Search' />
+                <TextField 
+                autoFocus
+                label='Search' color="secondary"
+                InputLabelProps={{
+                style: {
+                color:"#fc3",
+                outlineColor:"#fc3",
+                },
+                }}
+                InputProps={{
+                style: {
+                  color: "white",
+                }
+                }}
+                />
           </Grid>
           <Grid item xs={4}>
             <Link to={`/appversions/create/${encodeURIComponent(nameValue)}`}>
-                <Button variant='contained'>Create Version</Button>
+            <Button variant='contained'color='secondary' sx={{ fontSize:"0.8rem",color:"#121212",bgcolor:"#fc3"}} >Create Version</Button>
             </Link>
           </Grid>
         </Grid>
       </Stack>
         <br />
-      <DataGrid rows={data} columns={columns} pageSize={5} getRowId={(row) => row.id}/>
+      <DataGrid rows={data} columns={columns} pageSize={5} getRowId={(row) => row.id} sx={{
+              borderColor:"#121212",
+              color:"white",
+              '&.MuiDataGrid-cell:hover': {
+                color: 'secondary.main',
+              },
+              '.MuiTablePagination-toolbar': {
+                backgroundColor: '#1A1C1F',
+                width: '950px',
+                color: 'white',
+                height: '35px',
+              },
+              
+            }}
+            slots={{ noRowsOverlay: CustomNoRowsOverlay }}/>
     </div>
     </>
   );

@@ -1,0 +1,31 @@
+/* CSS */
+.outlinedloginbutton {
+    /* border: 2px solid #fc3 !important; */
+    background-color: #fc3;
+    color:black;
+    /* border-radius: 0; */
+    /* transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease; */
+  }
+  
+  .outlinedloginbutton:hover {
+    background-color: #fc3 !important;
+    color: black !important;
+    /* border: 2px solid #fc3; */
+  }
+  .outlinedloginbutton:focus {
+    background-color: #fc3 !important;
+    color: black !important;
+    /* border: 2px solid #fc3; */
+  }
+  
+  .outlinetextbar:hover{
+    border: 1px #fc3 !important;
+    background-color: transparent !important;
+    color: white !important;
+    /* border-radius: 0; */
+    /* transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease; */
+  }
+  .outlinedloginbutton2{
+    outline-color: #fc3 !important;
+    color: white !important;
+  }

@@ -5,22 +5,29 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
-import axios from 'axios';
 
+
+import axios from 'axios';
+import {Box} from  '@mui/material';
+function CustomNoRowsOverlay() {
+  return (
+<Box sx={{paddingLeft:'45%',paddingTop:'10%'}}>No Rows</Box>
+ );
+}
 export default function AppDataTable() {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
     // Fetch data from the backend API
     axios
-      .get('http://13.233.26.133/test')
+      .get('http:///13.201.53.69/test')
       .then((response) => {
         setData(response.data); // Set the response data to the state directly
         console.log("data is :" + response.data);
       })
       .catch((error) => {
         console.log(error);
-        alert('Failed to fetch data from the server asdf.');
+        alert('Failed to fetch data from the server.');
       });
   }, []);
   
@@ -31,7 +38,7 @@ export default function AppDataTable() {
       width: 200,
       renderCell: (params) => (
       <Link to={`/appversions/${encodeURIComponent(params.row._id)}`} style={{ textDecoration: 'none' }}>
-      <Button variant="contained" style={{ color: 'white', backgroundColor: '#3992ff' }}>
+      <Button variant="contained" color='secondary' sx={{fontSize:"0.8rem",color:"#121212",bgcolor:"#fc3"}}>
         {params.row.name}
       </Button>
       </Link>
@@ -48,7 +55,21 @@ export default function AppDataTable() {
       <Stack direction="row" spacing={2}>
         <Grid container spacing={2}>
           <Grid item xs={8}>
-            <TextField variant='outlined' label='Search' />
+                <TextField 
+                autoFocus
+                label='Search' color="secondary"
+                InputLabelProps={{
+                style: {
+                color:"#fc3",
+                outlineColor:"#fc3",
+                },
+                }}
+                InputProps={{
+                style: {
+                  color: "white",
+                }
+                }}
+                />
           </Grid>
           <Grid item xs={4}>
             {/* <Link to="/applications/create">
@@ -57,9 +78,23 @@ export default function AppDataTable() {
           </Grid>
         </Grid>
       </Stack>
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={data} columns={columns} pageSize={5} getRowId={getRowId} />
-      </div>
+      <div style={{ height: 400, width: '100%',paddingTop:"2.5% " }}>
+            <DataGrid rows={data} columns={columns} pageSize={5} getRowId={getRowId} sx={{
+              borderColor:"#121212",
+              color:"white",
+              '&.MuiDataGrid-cell:hover': {
+                color: 'secondary.main',
+              },
+              '.MuiTablePagination-toolbar': {
+                backgroundColor: '#1A1C1F',
+                width: '950px',
+                color: 'white',
+                height: '35px',
+              },
+              
+            }}
+            slots={{ noRowsOverlay: CustomNoRowsOverlay }}/>
+          </div>
     </>
   );
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './drop-file-input.css';
 
 import { ImageConfig } from '../../config/ImageConfig'; 
-import uploadImg from '../../assets/cloud-upload-regular-240.png';
+import uploadImg from '../../assets/cloud-upload-regular-241.png';
 
 const DropFileInput = props => {
 
@@ -21,7 +21,7 @@ const DropFileInput = props => {
     const onFileDrop = (e) => {
         const newFile = e.target.files[0];
         if (newFile) {
-            const updatedList = [...fileList, newFile];
+            const updatedList = [newFile];
             setFileList(updatedList);
             props.onFileChange(updatedList);
         }
@@ -52,16 +52,12 @@ const DropFileInput = props => {
             {
                 fileList.length > 0 ? (
                     <div className="drop-file-preview">
-                        <p className="drop-file-preview__title">
-                            Ready to upload
-                        </p>
                         {
                             fileList.map((item, index) => (
                                 <div key={index} className="drop-file-preview__item">
                                     <img src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
                                     <div className="drop-file-preview__item__info">
-                                        <p>{item.name}</p>
-                                        <p>{item.size}B</p>
+                                        <p>{item.name}  {item.size}B</p>
                                     </div>
                                     <span className="drop-file-preview__item__del" onClick={() => fileRemove(item)}>x</span>
                                 </div>

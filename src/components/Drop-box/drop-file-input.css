@@ -2,14 +2,14 @@
     position: relative;
     width: 400px;
     height: 200px;
-    border: 2px dashed #4267b2;
+    border: 2px dashed #fc3;
     border-radius: 20px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: #e6faff;
+    background-color: #121212;
 
 }
 
@@ -30,7 +30,7 @@
 
 .drop-file-input__label {
     text-align: center;
-    color: #ccc;
+    color: #fff;
     font-weight: 600;
     padding: 10px;
 }
@@ -40,7 +40,7 @@
 }
 
 .drop-file-preview {
-    margin-top: 30px;
+    margin-top: 10%;
 }
 
 .drop-file-preview p {
@@ -55,24 +55,27 @@
     position: relative;
     display: flex;
     margin-bottom: 10px;
-    background-color: #f5f8ff;
+    background-color: black;
     padding: 15px;
     border-radius: 20px;
 }
 
 .drop-file-preview__item img {
-    width: 50px;
+    width: 80px !important;
+    height: 80px !important;
     margin-right: 20px;
+    margin-top: 10px;
 }
 
 .drop-file-preview__item__info {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    width: 100px !important;
     justify-content: space-between;
 }
 
 .drop-file-preview__item__del {
-    background-color: #fff;
+    background-color: #fc3;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -81,9 +84,9 @@
     justify-content: center;
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 80%;
     transform: translateY(-50%);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(136, 147, 158, 0.2) 0px 8px 24px;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease;

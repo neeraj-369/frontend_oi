@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function DashDataTable() {
     const handleResetClick = () => {
-        axios.post('http://13.233.26.133/test/reset') 
+        axios.post('http:///13.201.53.69/test/reset') 
             .then(response => {
                 console.log('Reset successful:', response.data);
             })
@@ -15,7 +15,7 @@ export default function DashDataTable() {
     };
     return (
         <div style={{ height: 400, width: '100%' }}>
-            <Button variant="outlined" onClick={handleResetClick}>
+            <Button variant='contained' color = 'secondary' sx={{ fontSize:"1rem",color:"#121212",bgcolor:"#fc3"}} onClick={handleResetClick}>
                 Reset
             </Button>
         </div>

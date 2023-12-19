@@ -5,27 +5,17 @@ import { Outlet } from 'react-router-dom';
 
 
 
-function Applications() {
+function AdminDashboardP() {
     const userType = localStorage.getItem('userType'); 
     const renderUserTypeSpecificUI = () => {
-        if (userType === '0') {
+        if (userType === '2') {
             return (
                 <div id="Application">
-                    <h1>Games</h1>
+                    <h1>Dashboard</h1>
                     <div id="app-details" style={{paddingTop:"5px"}}><Outlet /></div>
                 </div>
             );
-        }else
-        {
-            return (
-                <div id="Application">
-                    <h1>Applications</h1>
-                    <div id="app-details" style={{paddingTop:"5px"}}><Outlet /></div>
-                </div>
-            );
-    
         }
-    
     };
     return (
         
@@ -33,4 +23,4 @@ function Applications() {
     )
 }
 
-export default Applications;
+export default AdminDashboardP;
