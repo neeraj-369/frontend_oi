@@ -25,7 +25,7 @@ export default function NameDetailPage() {
   const [specd,setSpecd] = useState("");
   useEffect(() => {
     setAppname(name);
-    axios.get(`http:///13.201.53.69/version/deployments/${name}`)
+    axios.get(`http://13.201.53.69/version/deployments/${name}`)
       .then((response) => {
         setDeployments(response.data.deployments);
         setAppname(name);
@@ -40,12 +40,12 @@ export default function NameDetailPage() {
     
     setSpecd(deploymentk);
     axios
-      .delete(`http:///13.201.53.69/version/deleted/`, {
+      .delete(`http://13.201.53.69/version/deleted/`, {
         data: { deploymentk , appname}
       })
       .then((response) => {
         // Update deployments state by removing the deleted deployment
-        axios.get(`http:///13.201.53.69/version/deployments/${name}`)
+        axios.get(`http://13.201.53.69/version/deployments/${name}`)
         .then((response) => {
         setDeployments(response.data.deployments);
       })

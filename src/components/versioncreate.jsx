@@ -26,7 +26,7 @@ export default function VersionCreate() {
             name: nameValue,
             registry: registryValue,
         }
-        axios.post('http:///13.201.53.69/appversion/createversion', newApp)
+        axios.post('http://13.201.53.69/appversion/createversion', newApp)
             .then((response) => {
                 console.log(response);
                 alert('Created New Version named : ' + response.data.message);

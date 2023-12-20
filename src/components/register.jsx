@@ -37,11 +37,11 @@ export default function SignUp() {
 
     let apiEndpoint;
     if (userType === 0) {
-      apiEndpoint = "http:///13.201.53.69/authorization/userregister";
+      apiEndpoint = "http://13.201.53.69/authorization/userregister";
     } else if (userType === 1) {
-      apiEndpoint = "http:///13.201.53.69/authorization/developerregister";
+      apiEndpoint = "http://13.201.53.69/authorization/developerregister";
     } else if (userType === 2) {
-      apiEndpoint = "http:///13.201.53.69/authorization/adminregister";
+      apiEndpoint = "http://13.201.53.69/authorization/adminregister";
     }
     try {
         const response = await axios.post(apiEndpoint, {

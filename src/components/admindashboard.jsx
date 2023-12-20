@@ -23,7 +23,7 @@ function AdminDashboard() {
   React.useEffect(() => {
     // Fetch data for users of types Developer and User from the backend API
 //     axios
-//       .get('http:///13.201.53.69/dashboard')
+//       .get('http://13.201.53.69/dashboard')
 //       .then((response) => {
 //         setData(response.data);
 //         console.log("data is: " + JSON.stringify(response.data));
@@ -36,7 +36,7 @@ function AdminDashboard() {
 
 
     axios
-      .get('http:///13.201.53.69/dashb/dashboard')
+      .get('http://13.201.53.69/dashb/dashboard')
       .then((response) => {
         const modifiedData = response.data.map(user => {
           user.UserType = user.hasOwnProperty('UserType') ? user.UserType : 'User'; // Assuming UserType is coming from the backend
@@ -56,7 +56,7 @@ function AdminDashboard() {
   const handleDeleteUser = (id) => {
     // Delete user by ID
     axios
-      .delete(`http:///13.201.53.69/dashb/dashboard/${id}`)
+      .delete(`http://13.201.53.69/dashb/dashboard/${id}`)
       .then(() => {
         setData((prevData) => prevData.filter((row) => row._id !== id));
         alert('User deleted successfully');

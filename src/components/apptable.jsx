@@ -20,7 +20,7 @@ export default function AppDataTable() {
   React.useEffect(() => {
     // Fetch data from the backend API
     axios
-      .get('http:///13.201.53.69/test')
+      .get('http://13.201.53.69/test')
       .then((response) => {
         setData(response.data); // Set the response data to the state directly
         console.log("data is :" + response.data);

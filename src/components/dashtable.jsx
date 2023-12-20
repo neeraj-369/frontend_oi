@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function DashDataTable() {
     const handleResetClick = () => {
-        axios.post('http:///13.201.53.69/test/reset') 
+        axios.post('http://13.201.53.69/test/reset') 
             .then(response => {
                 console.log('Reset successful:', response.data);
             })

@@ -70,7 +70,7 @@ export default function AppCreate() {
             alert("Please Enter the Application Name");
             return ;        
         }
-        axios.post('http:///13.201.53.69/test/checkename', nameofApp)
+        axios.post('http://13.201.53.69/test/checkename', nameofApp)
             .then((response) => {
                 console.log(response);
                 // alert('Given name is valid application name, uploading to AWS S3 ' + response.data.message);
@@ -233,7 +233,7 @@ export default function AppCreate() {
             alert("Registry doesn't exist!");
             return;
         }
-        axios.post('http:///13.201.53.69/test/create', newApp)
+        axios.post('http://13.201.53.69/test/create', newApp)
             .then((response) => {
                 console.log(response);
                 alert('Created New Application named : ' + response.data.message);
@@ -263,7 +263,7 @@ export default function AppCreate() {
             filename: filei,
         }
         console.log("Raj calling fun1 with kaniko registry");
-        axios.post('http:///13.201.53.69/test/create', newApp)
+        axios.post('http://13.201.53.69/test/create', newApp)
             .then((response) => {
                 console.log(response);
                 alert('Created New Application named : ' + response.data.message);

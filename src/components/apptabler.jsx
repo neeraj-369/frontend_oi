@@ -25,7 +25,7 @@ export default function AppDataTableR() {
   React.useEffect(() => {
     // Fetch data from the backend API
     axios
-      .get('http:///13.201.53.69/test')
+      .get('http://13.201.53.69/test')
       .then((response) => {
         setData(response.data); // Set the response data to the state directly
         console.log("data is :" + response.data);
@@ -39,7 +39,7 @@ export default function AppDataTableR() {
   // Custom click handler for the delete button
   const handleDeleteClick = (id, name) => {
     axios
-      .delete(`http:///13.201.53.69/test/${id}`, {
+      .delete(`http://13.201.53.69/test/${id}`, {
         params: { name: name }
       })
       .then((response) => {

@@ -25,7 +25,7 @@ export default function AppVersionT() {
     const fetchData = async () => {
       try {
         // Fetch data from the backend API using the applicationId parameter
-        const response = await axios.get(`http:///13.201.53.69/appversion/${applicationId}`);
+        const response = await axios.get(`http://13.201.53.69/appversion/${applicationId}`);
         console.log(response);
         const dataWithIds = response.data.map((row, index) => ({
             ...row,
@@ -44,7 +44,7 @@ export default function AppVersionT() {
 
   const handleDeleteClick = async (applicationName, versionName) => {
     try {
-      const response = await axios.delete(`http:///13.201.53.69/appversion/deleteversion`, {
+      const response = await axios.delete(`http://13.201.53.69/appversion/deleteversion`, {
         data: {
           applicationName,
           versionName,
@@ -66,7 +66,7 @@ export default function AppVersionT() {
     console.log("applicationName: " + applicationName + " versionName: " + versionName);
     try {
       // Send a POST request to activate the version
-      const response = await axios.post('http:///13.201.53.69/appversion/activate', {
+      const response = await axios.post('http://13.201.53.69/appversion/activate', {
         applicationName,
         versionName,
       });

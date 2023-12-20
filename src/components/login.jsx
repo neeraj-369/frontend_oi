@@ -48,11 +48,11 @@ export default function SignIn() {
       }
       let apiEndpoint;
       if (userType === 0) {
-        apiEndpoint = "http:///13.201.53.69/authorization/userlogin";
+        apiEndpoint = "http://13.201.53.69/authorization/userlogin";
       } else if (userType === 1) {
-        apiEndpoint = "http:///13.201.53.69/authorization/developerlogin";
+        apiEndpoint = "http://13.201.53.69/authorization/developerlogin";
       } else if (userType === 2) {
-        apiEndpoint = "http:///13.201.53.69/authorization/adminlogin";
+        apiEndpoint = "http://13.201.53.69/authorization/adminlogin";
       }
       try {
         const response = await axios.post(apiEndpoint, {

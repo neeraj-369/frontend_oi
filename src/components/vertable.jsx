@@ -43,7 +43,7 @@ export default function VerDataTable() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
     axios
-      .get('http:///13.201.53.69/test')
+      .get('http://13.201.53.69/test')
       .then((response) => {
         const modifiedData = response.data.map((row) => ({
           ...row,
